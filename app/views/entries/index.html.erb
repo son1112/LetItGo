@@ -1,13 +1,12 @@
+<div class="text-box">
+  <%= render 'form_min' %>
+</div>
 
 <% @entries.reverse.each do |entry| %>
   <div id="entry">
     <h1 class="entry-title"><%= entry.title %></h1>
     <h2 class="entry-subtitle"><%= entry.subtitle %></h2> 
     <p class="entry-content"><%= entry.body %></p>
-
-  <ul id="crud-list">
-    <li><%= link_to '*', edit_entry_path(entry) %></li>
-  </ul>
   </div>
 <% end %>
 <br />

@@ -17,7 +17,7 @@ html,body {
 
     color: $pencil;
     font-family: 'Special Elite', 'Poiret One';
-    background-image: url('nicki.jpg');
+    background-image: url('elsa.jpg');
     background-size: cover;
 /*    background-position: center 100%;*/
 /*    background-repeat: no-repeat;*/
@@ -80,7 +80,7 @@ p {
 
 
 #page {
-    padding: 2em 3em 3em 0;
+    padding: 0;
     margin: 1em;
     background: magenta;
     opacity: 0.8;
@@ -122,19 +122,20 @@ p {
 }
 
 #crud-list {
-    color: magenta;
+    color: $pencil;
     display: flex;
     list-style-type: none;
+    font-size: 30px;
 
     padding: 5px 0 0 5px;
-    background: white;
+    background: $baby-blue;
 
     li {
 	padding: 0 6px 0 6px;
     }
 
     a {
-	color: magenta;
+	color: $pencil;
     }
 }
 

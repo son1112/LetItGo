@@ -6,13 +6,11 @@
     <p class="entry-content"><%= entry.body %></p>
 
   <ul id="crud-list">
-    <li><%= link_to 'Show', entry %></li>
-    <li><%= link_to 'Edit', edit_entry_path(entry) %></li>
-    <li><%= link_to 'Destroy', entry, :method => :delete, :data => { :confirm => 'Are you sure?' } %></li>
+    <li><%= link_to '*', edit_entry_path(entry) %></li>
   </ul>
   </div>
 <% end %>
 <br />
 
-<%= link_to '+', new_entry_path %>
+
 

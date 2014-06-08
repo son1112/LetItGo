@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>STET</title>
+    <title>LetItGo</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -10,41 +10,44 @@
 
   <body>
 
-
     <div id="content_div">
+
+      <!-- LEFT PANEL -->
       <div id="left">
 
 	<div class="blue right"
 	     data-0="opacity:1;"
 	     data-200="opacity:0;"
 	     >
-	  <h1 class="title right">:p</h1>
+	  <h1 class="title right">Let it </h1>
 	  <strong>
-	    <p>Good morning, </p>
-	    <p>Darling. </p>
+	    <p>River </p>
+	    <p>Phoenix </p>
 	  </strong>
 	</div>
 
 	<h1 id="new-button" 
 	    class="pink right"
-	    data-0="font-size:40px;"
+	    data-0="font-size:60px;"
 	    data-2000="font-size:1000px;"
 	    >
 	  <%= link_to '+', new_entry_path %></h1>
-
       </div>
 
 
-	<div id="right">
-	  <div class="left">
+      <!-- RIGHT PANEL -->
+      <div id="right">
+	<div class="left">
 
-	    <h1 class="title left">d:</h1>
-	    <strong>
-	      <p>and good night.</p>
-	      <p> Sweet dreams.</p>
-	    </strong>
+	  <h1 class="title left">
+	    go!
+	  </h1>
+	  <strong>
+	    <p> Hi!</p>
+	    <p> Hi!</p>
+	  </strong>
 
-      <div id="skrollr-body">
+	  <div id="skrollr-body">
 	    <div id="page">
 	      <%= yield %>
 	    </div>
@@ -55,6 +58,8 @@
 
     </div>
 
+
+    <!-- SKROLLR -->
     <script>
      (function($){
        skrollr.init({

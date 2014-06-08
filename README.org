@@ -1,0 +1,856 @@
+Blog: STET
+
+* Description
+
+  STET: disregard a change
+
+  Create a weblog, comfortably accessible on mobile devices for "on the go" quips,
+  notes about my day; questions and comments.
+
+  What we need to look at for functionality:
+
+^-----------------------------------------------------------------------------06070259---^
+
+  - [ ] We need USERs with authenticatable accounts
+    
+    These users will have various access to update content and that's really
+    all that they need. However,
+
+    - [ ] Admin vs normal user?
+
+      Perhaps that won't be necessary. The only need for a user is to be able
+      to update content. Even an admin, at this point, will not need to change 
+      anything else.
+
+      Although, getting people to sign up for general user accounts for signing 
+      up for summer camp will be helpful for collection of contact data
+
+    - [ ] Content updating forms 
+        should 
+      - [ ] be able to have images added to content by users
+      - [ ] accept HTML input 
+	OR, for what they are used to is WYSIWYG
+      - [ ] WYSIWYG
+	or both...
+	in other words, select a word, push a button that makes it bold, italic, etc
+	Uggg, this is where this shit gets annoying. You end up building a bunch of nonsense
+	that actually makes it more complicated in a way, when it would be simpler to learn
+	some basic html... but that's my opinion. I also feel like this is where Wordpress
+	has gone a little haywire at times, adding markup where it's not needed, while
+	at the same time not allowing some user provided markup to pass through unless
+	placed within a <code> element.
+
+    - [ ] Private content
+
+      - [ ] admin vs common user accounts
+
+    - [ ] User profiles?
+
+    - [ ] Summer Camp Registration model?
+
+    - [ ] Volunteers/CCF
+
+  - [ ] BLOG/NEWSfeed for news updates?
+
+  - [ ] PAGEs for general website content
+
+v-----------------------------------------------------------------------------06070259---v
+
+* Development Documentation
+
+** CREATE a new Rails application
+
+   - [X] create a new application
+   
+         : rails new Application
+
+   - [ ] RESEARCH Spring?
+
+         Something new showed up. I'm not sure what to make of it, but if I experience 
+         problems, I'll return
+
+         : run  bundle exec spring binstub -all
+
+         : * bin/rake: spring inserted
+         : * bin/rails: spring inserted
+
+   - [X] rename application.css to application.css.scss
+
+     
+
+
+** UPDATE the README file
+
+   - [X] mv, rm, or recreate the README file
+
+      : mv README.rdoc README.org
+
+      start making edits
+
+
+** TEST the skeletal application
+
+   - [X] basic rails server is functional?
+
+  : rails server
+
+   - [-] Something else new came up regarding 'Spring'
+
+     [[https://github.com/rails/spring][Spring?]]
+
+     : Warning: Running 'gem pristine --all' to regenerate your installed gemspecs
+     :  (and deleting then reinstalling your bundle if you use bundle --path) will
+     :  improve the startup performance of Spring.
+
+     - [-] run 'gem pristine --all
+
+       - [-] ERROR: While executing gem ... (Gem::InstallError)
+	 
+	 :invalid gem: No such file or directory @ rb_sysopen - /home/son/.rvm/gems/ruby-1.9.2-p320/cache/minitest-1.6.0.gem
+
+	 - [X] update bundle
+
+	   : bundle update
+
+	 - [ ] solved?
+
+     - [ ] restart server, see if same warning occurs
+
+       - [ ] same errors
+
+^-----------------------------------------------------------------------------06070259---^
+
+** UPDATE the Gemfile
+
+*** Make Changes
+   
+   - [X] remove unnecessary comments
+
+   - [X] update rails
+
+     : gem 'rails', '4.1.0'
+
+   - [X] specify explicit version for ruby
+
+     : ruby '2.1.1'
+
+   - [X] create groups for development and production databases (postgres/sqlite3)
+
+	  : group :development, :test do
+          :  gem 'sqlite3'
+          : end
+
+	  : #group :production do
+	  : # gem 'pg', '0.15.1'
+	  : # gem 'rails_12factor', '0.0.2'
+	  : #end
+     
+     - [X] remove "gem 'sqlite3'"
+
+   - [X] minor package updates
+
+     - [X] gem 'jquery-rails' 
+     : gem 'jquery-rails', '3.0.4'
+     - [X] gem 'sass-rails', '~> 4.0.0'
+     : gem 'sass-rails', '4.0.3'
+     - [X] gem 'uglifier', '>= 1.3.0'
+     : gem 'uglifier', '2.1.1'
+     - [X] gem 'coffee-rails', '~> 4.0.0'
+     : gem 'coffee-rails', '4.0.1'
+
+*** Update the bundle
+
+    - [X] UPDATE
+
+      : bundle update
+
+    - [X] INSTALL the updates
+
+      : bundle install --without production
+      
+      NOTE: all future updates only "bundle install" needed, unless and update 
+      is needed
+
+
+** START working on the application!
+
+   [ This area needs clean up, organization and clarity ]
+
+*** *ModelViewControl* Organization
+
+**** MODEL
+
+***** Models
+
+****** SAMPLE      
+
+       | Model |                     |                           |                 |
+       |-------+---------------------+---------------------------+-----------------|
+       |       | attribute           | example                   | type            |
+       |-------+---------------------+---------------------------+-----------------|
+       |       | id                  | 1                         | integer         |
+       |       |                     |                           |                 |
+       |       | name                | "Ander Son"               | string          |
+       |       |                     |                           |                 |
+       |       | username            | "Son"                     | string          |
+       |       |                     |                           |                 |
+       |       | email               | "son@lincolnix.net"       | string          |
+       |       |                     |                           |                 |
+       |       | age                 | 33                        | integer         |
+       |       |                     |                           |                 |
+       |       | location            | "Omaha, NE"               | string          |
+       |       |                     |                           |                 |
+       |       | pictures            | [ "one.jpg" , "two.jpg" ] | array[strings]  |
+       |       |                     |                           |                 |
+       |       | connections/friends | [ 2 , 3 , 12 ]            | array[user_ids] |
+       |       |                     |                           |                 |
+
+
+
+
+
+****** PAGEs      
+
+       | PAGES |                     |                                |                 |
+       |-------+---------------------+--------------------------------+-----------------|
+       |       | attribute           | example                        | type            |
+       |-------+---------------------+--------------------------------+-----------------|
+       |       | id                  | 1                              | integer         |
+       |       |                     |                                |                 |
+       |       | title               | "Home"                         | string          |
+       |       |                     |                                |                 |
+       |       | description         | "Prairie Hill Learning Center" | string          |
+       |       |                     |                                |                 |
+
+
+
+
+****** USERs
+
+       | User |                     |                           |                 |
+       |------+---------------------+---------------------------+-----------------|
+       |      | attribute           | example                   | type            |
+       |------+---------------------+---------------------------+-----------------|
+       |      | id                  | 1                         | integer         |
+       |      |                     |                           |                 |
+       |      | name                | "Ander Son"               | string          |
+       |      |                     |                           |                 |
+       |      | username            | "Son"                     | string          |
+       |      |                     |                           |                 |
+       |      | email               | "son@lincolnix.net"       | string          |
+       |      |                     |                           |                 |
+
+       Setting up a User model with Devise creates only attributes for email and
+       encrypted password, plus some others that aren't necessarily important to
+       the surface use of our model. Following the Devise [[https://github.com/plataformatec/devise/wiki/How-To%3a-Allow-users-to-sign-in-using-their-username-or-email-address][documentation]] for adding
+       a new attribute, for example:
+
+       - [X] Create username field
+
+	 - [X] create a migration
+
+	   : rails generate migration AddUsernameToUsers username:string:uniq
+
+	 - [X] migrate the database
+
+	   : rake db:migrate
+
+	 - [X] Modify application_controller.rb
+
+	   - [X] add username, email, password, password confirmation and
+	     remember me to configure_permitted_parameters
+
+	     see also [[https://github.com/plataformatec/devise#strong-parameters][strong parameters documentation for Devise]]
+
+	     : class ApplicationController < ActionController::Base
+             :   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+             :   protected
+
+             :   def configure_permitted_parameters
+             :     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
+             :     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
+             :     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
+             :   end
+             : end
+
+       - [-] Create a login virtual attribute in the User model
+
+	 - [X] Add login as an attr_accessor in app/models/user.rb
+
+	   : # Virtual attribute for authenticating by either username or email
+	   : # This is in addition to a real persisted field like 'username'
+	   : attr_accessor :login
+
+	 - [ ] if you will use this variable somewhere else in the code
+
+	   : def login=(login)
+	   :   @login = login
+	   : end
+	   :
+	   : def login
+	   :   @login || self.username || self.email
+	   : end
+
+       - [-] Tell Devise to use :login in the authentication_keys
+
+	 - [X] Modify config/initializers/devise.rb to have:
+
+	   : config.authentication_keys = [ :login ]
+
+	 - [ ] If you are using multiple models with Devise, it is best to set 
+           the authentication_keys on the model itself if the keys may differ:
+
+	   : devise :database_authenticatable, :registerable,
+           :        :recoverable, :rememberable, :trackable, 
+           :        :validatable, :authentication_keys => [:login]
+
+       - [-] Overwrite Devise's find_for_database_authentication method in User model (user.rb)
+
+	 Because we want to change the behavior of the login action, we have to 
+         overwrite the find_for_database_authentication method. The methods' 
+         stack works like this : find_for_database_authentication calls 
+         find_for_authentication which calls find_first_by_auth_conditions. 
+         Overriding the find_for_database_authentication method allows you to 
+         edit database authentication ; overriding find_for_authentication allows 
+         you to redefine authentication at a specific point (such as token, LDAP or database). 
+         Finally, if you override the find_first_by_auth_conditions method, you 
+         can customize finder methods (such as authentication, account unlocking 
+         or password recovery)
+
+	 - [-] For Active Record:
+
+	   : # app/models/user.rb
+
+           :     def self.find_first_by_auth_conditions(warden_conditions)
+           :       conditions = warden_conditions.dup
+           :       if login = conditions.delete(:login)
+           :         where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+           :       else
+           :         where(conditions).first
+           :       end
+           :     end
+
+           : #### This is the correct method you override with the code above
+           : #### def self.find_for_database_authentication(warden_conditions)
+           : #### end
+
+	   - [ ] Be sure to add case insensitivity to your validations on :username:
+	     
+	     : # app/models/user.rb
+
+             : validates :username,
+             :   :uniqueness => {
+             :     :case_sensitive => false
+             :   },
+             :   :format => { ... } # etc.
+
+	   - [X] Alternatively, change the find conditions like so:
+
+	     : # when allowing distinct User records with, e.g., "username" and "UserName"...
+             : where(conditions).where(["username = :value OR lower(email) = lower(:value)", { :value => login }]).first
+
+       - [X] Update your views
+
+	 : rails g devise:views
+
+       - [X] Modify the views
+
+	 app/views/devise/sessions/new.html.erb
+
+	 - [X] remove
+
+	   : <div><%= f.label :email %><br />
+	   : <%= f.email_field :email %></div>
+
+	 - [X] add
+
+	   : <div><%= f.label :login %><br/>
+	   : <%= f.text_field :login %></div>
+
+       - [ ] Manipulate the :login label that Rails will display
+
+       - [ ] Allow users to recover their password or confirm their account using
+	 either username or email address
+
+
+****** CONTENTs?       
+
+       | Content |           |                                               |         |
+       |---------+-----------+-----------------------------------------------+---------|
+       |         | attribute | example                                       | type    |
+       |---------+-----------+-----------------------------------------------+---------|
+       |         | id        | 1                                             | integer |
+       |         |           |                                               |         |
+       |         | title     | "News"                                        | string  |
+       |         |           |                                               |         |
+       |         | content   | "The Children's Country Fair is coming up..." | text    |
+       |         |           |                                               |         |
+       |         | page      | "Home"                                        | string  |
+       |         |           |                                               |         |
+
+       
+
+
+****** POSTs       
+
+**** VIEW
+
+     When in doubt, make sure a view exists for the page you are trying to route!
+     
+***** Setup BOOTSTRAP
+
+****** Install Bootstrap
+
+      - [X] Install the Bootstrap Gem 
+
+	: gem 'bootstrap-sass'
+
+	: bundle install
+
+      - [X] Create/add to app/assets/stylesheets/bootstrap_and_customization.css.scss
+
+	: @import 'bootstrap';
+
+      - [X] Restart your server
+
+****** Add a container to our app
+
+       - [X] modify app/views/layouts/application.html.erb, varying links as necessary
+
+	 - application.html.erb is a wrapper for each page
+
+	 : <%= link_to "Home", root_path %>
+	 : <%= link_to "About", about_path %>
+	 : <%= link_to "Contact", contact_path %>
+	 : <%= link_to "Sign Up", sign_up_path %>
+	 : <%= link_to "Log In", log_in_path %>
+	 : <div class="container">
+	 :     <%= yield %>
+	 : </div>
+
+       - [X] *ERROR* SOLVED
+	 
+	 - [X]  When in doubt, check for outdated gems
+
+	 : bundle outdated
+	 
+	 - [X] trials
+
+	 : NoMethodError in Pages#welcome
+
+	 : Showing /home/son/RAILS-dev/son/nebraska-dating/app/views/layouts/application.html.erb where line #5 raised:
+
+	 : undefined method 'environment' for nil:NilClass
+	 :  (in /home/son/RAILS-dev/son/nebraska-dating/app/assets/stylesheets/bootstrap_and_customizations.css.scss)
+
+         : <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
+	 My first search found this stackoverflow post:
+	 http://stackoverflow.com/questions/22392862/undefined-method-environment-for-nilnilclass-when-importing-bootstrap
+
+	 It seems to have something to do with a adding @import 'bootstrap': line
+
+	 There are several suggestions posed. May have something to do with sass-rails version being used.
+
+	 - [X] SOLVED updated sass-rails to 4.0.3
+
+	 - [X] check for [[./outdated-gems.org][outdated gems]]
+
+	   : bundle outdated
+
+	   It looks like I have quite a few outdated gems! Not sure if I should 
+	   update all of them or not.
+
+	 - [X] update the bundle
+
+	   : bundle update
+
+	   same error
+
+	 - [X] restart the server
+
+	   same error
+
+****** Create a _header.html.erb Partial
+
+       [[http://guides.rubyonrails.org/layouts_and_rendering.html][Layouts and Rendering]]
+
+       - [X] require Bootstrap's JavaScript, after jquery_ujs
+
+	     app/assets/javascripts/application.js
+
+	     : //= require jquery_ujs
+	     ...
+	     : //= require bootstrap
+	     ...
+	     : //= require turbolinks
+
+       - [X] app/views/layouts/_header.html.erb
+
+       - [-] create a link to the partial in application.html.erb
+
+	 - [X] 
+
+	 : <%= render 'layouts/header' %>
+	 
+	 - [ ] Make a habit of keeping things clean by using partials
+
+       - [X] add a navigation bar in _header.html.erb
+
+	 SIMPLE NAV with tabs:
+
+	 : <ul class="nav nav-tabs">
+	 :   <li><%= link_to "ABOUT", about_path %></li>
+         :   <li><%= link_to "NEWS", news_path %></li>
+         :   <li><%= link_to "PROGRAMS", programs_path %></li>
+	 : </ul>
+
+         NAVBAR:
+
+         : <nav class="navbar navbar-default" role="navigation">
+         :   <!-- Brand and toggle get grouped for better mobile display -->
+         :   <div class="navbar-header">
+         :     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+         :       <span class="sr-only">Toggle navigation</span>
+         :       <span class="icon-bar"></span>
+         :       <span class="icon-bar"></span>
+         :       <span class="icon-bar"></span>
+         :     </button>
+         :     <a class="navbar-brand" href="#">Nebraska Dating</a>
+         :   </div>
+
+         :   <!-- Collect the nav links, forms, and other content for toggling -->
+         :   <div class="collapse navbar-collapse navbar-ex1-collapse">
+         :     <ul class="nav navbar-nav navbar-right">
+         :       <li><%= link_to "Home", root_path %></li>
+         :       <li><%= link_to "About", about_path %></li> 
+         :     </ul>
+         :   </div><!-- /.navbar-collapse -->
+         : </nav>
+
+       - [X] Add Viewport
+
+	 views/layouts/application.html.erb
+
+	 : <meta name="viewport" content="width=device-width, intial-scale=1.0">
+
+***** Skrollr
+
+      Skrollr is a stand-alone parallax scrolling library for mobile and desktop.
+      The skrollr-rails gem integrates skrollr with the Rails asset pipeline for 
+      ease of use and version control.
+
+      https://github.com/reed/skrollr-rails
+
+      - [X] install
+
+	: gem 'skrollr-rails'
+
+	: bundle install
+
+      - [ ] setup
+
+	app/assets/javascripts/application.js
+
+	: //= require skrollr
+	: //= require skrollr.ie
+	: //= require skrollr.menu
+
+      - [ ] separate skrollr-body
+
+	Place #skrollr-body around %yield
+
+	: <div id="skrollr-body">
+	:   <%= yield %>
+	: </div>
+
+
+
+**** Visual Design Concept
+
+      based off of current website, built on wordpress
+
+      - [ ] all built-in variable changes need to go above '@import 'bootstrap'
+
+****** Aesthetic
+
+****** Functionality       
+     
+**** CONTROL    
+
+
+*** GENERAL setup options
+
+**** SCAFFOLDS
+
+     - [X] Disable scaffold stylesheet creation because it overrides Bootstrap CSS
+
+       Add the following to config/application.rb
+
+       : config.generators do |g|
+       :   g.stylesheets false
+       : end
+
+     - [-] Generate a scaffold for each model
+
+	   : rails generate scaffold Resource attribute:type attribute:type
+
+       - [X] PAGE
+
+	 : rails generate scaffold Page title:string description:string index
+
+	 - [X] Migrate the database
+
+           : rake db:migrate
+
+	 - [X] restart the server
+
+       - [ ] CONTENT
+
+	 
+
+       - [-] USER
+
+	 - [X] setup Devise
+
+	   - [X] add the Devise gem
+
+	     : gem 'devise'
+
+	   - [X] update the bundle
+
+	     : bundle install
+
+	   - [X] install Devise
+
+	     : rails generate devise:install
+
+	   - [X] Ensure you have defined default url options in your environments
+	     files. Here is an example of default_url_options appropriate for a 
+	     development environment in config/environments/development.rb:
+
+	     - [X] development
+
+	     : config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+	     In production, :host should be set to the actual host of your application
+	     config/environments/production.rb
+	     
+	     - [X] production
+
+	     : config.action_mailer.default_url_options = { host: 'http://www.prairiehill.com' }
+
+	   - [X] Ensure you have defined root_url to *something* in your config/routes.rb
+
+	     : root "pages#home"
+
+	   - [X] Ensure you have flash messages in app/views/layouts/application.html.erb
+	     
+	     : <% flash.each do |name, msg| %>
+	     :     <%= content_tag(:div, msg, class: "alert alert-info") %>
+	     : <% end %>
+
+	   - [X] Set Precompile to False
+	     config/application.rb
+
+	     Place the following ABOVE the module APP definition!
+
+	     : config.assets.initialize_on_precompile = false
+
+	   - [X] Copy Devise views (for customization) to your app
+
+	     : rails g devise:views
+
+	 - [X] Set up a USER model
+	   
+	   - [X] generate a user model
+
+	     : rails g devise user
+
+	     - if you made a mistake, you can destroy a model
+
+	       : rails destroy devise user 
+	     
+	   - [X] migrate your database
+
+	     : rake db:migrate
+
+	   - [X] restart the server
+
+	 - [ ] 
+
+	 Question: Use Devise or set up authentication from scratch?
+
+	 I have set up and used devise for previous applications. 
+	 For thorough learning purposes here, I am going to learn to 
+	 create user authentication from scratch, following this guide:
+
+         [[http://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/][Authentication from Scratch]]
+
+	 _The basics (from SitePoint):_
+
+	 *Sign-up*: Create a new [[*User][User]]. This user will register with a username, 
+	 password (which will be encrypted in the database), email, etc.
+
+	 *Login*: Allow a user to sign in with his/her valid username and password.
+	 The authentication process happens by matching the username and password
+	 in the database, allowing the user access to the protected actions only
+	 if the given information matches the recorded values successfully.
+	 If not, the user will be redirected to the login page again.
+
+	 *Access Restriction*: Create a session to hold the authenticated user
+	 ID after login, so navigation through additional protected actions can
+	 be done easily by just checking the userID in the current session.
+
+	 *Logout*: Allow the user to sign out and set the authenticated userID
+	 in session file to nil.
+
+	 - [X] Add bcrypt to the Gemfile and update
+
+	   : gem 'bcrypt'
+	   
+	   : bundle install
+
+	 - [ ] Generate User scaffold
+
+	   : rails generate scaffold User name:string username:string email:string age:integer location:string pictures:text friends:text encrypted_password:string salt:string timestamps:string
+
+	   Note: [[http://www.therailsway.com/2009/8/3/users-and-passwords/][Salting]] is a way to prevent being opent to [[http://en.wikipedia.org/wiki/Rainbow_table][rainbow attacks]]. 
+           It stores a small random value against each of your users and adds
+	   that to the password before hashing it.
+
+	   - [ ] what type should the salt be?
+	     
+	     string?
+
+       - [ ] Migrate the database
+
+       : rake db:migrate
+
+**** MODELS
+
+**** CONTROLLERS
+
+**** HELPERS
+
+**** MAILERS
+
+**** MIGRATIONS
+
+**** RESOURCES    
+
+
+*** Create views for each of the pages needed in app/views/...
+
+*** Configure ROUTES
+
+    - [X] Add root route to config/routes.rb
+
+      : root "pages#welcome"
+
+    - [ ] create paths for desired routes
+
+      : get "about" => "pages#about"
+      : get "contact" => "pages#contact"
+      : get "sign_up" => "pages#sign_up"
+      : get "log_in" => "pages#log_in"
+
+
+*** simple_form
+
+    - [ ] gem 'simple_form'
+
+    - [ ] bundle install
+      
+    - [ ] rails g simple_form:install --bootstrap
+
+       Be sure to have a copy of the Bootstrap stylesheet available on your
+       application, you can get it on http://twitter.github.com/bootstrap.
+
+       Inside your views, use the 'simple_form_for' with one of the Bootstrap form
+       classes, '.form-horizontal', '.form-inline', '.form-search' or
+       '.form-vertical', as the following:
+
+       = simple_form_for(@user, html: {class: 'form-horizontal' }) do |form|
+
+*** mailer contact
+
+    http://rubyonrailshelp.wordpress.com/2014/01/08/rails-4-simple-form-and-mail-form-to-make-contact-form/
+
+    set up successfully in development
+    
+    - [ ] change heroku configs to prairiehill email authentication for production
+
+
+*** Volunteer Application
+
+    - [ ] Users
+
+      - [ ] Devise
+      
+    - [ ] Model
+
+      
+
+    - [ ] View
+      
+    - [ ] Control
+
+* TODO
+
+  - [ ] come up with a clever name
+  - [ ] set up sonix server to host production
+  - [X] develop this document into a template for future application guidance
+
+** Research
+
+   - [ ] TDD(Test Driven Development)
+   - [ ] agile
+   - [ ] organizational methods
+   - [ ] payment servicing
+   - [-] hosting rails production app on debian server
+     - [-] setup for easy pushing equivalent to heroku setup
+
+       - [X] install Rails
+       - [X] install Ruby
+       - [X] install sqlite3
+       - [ ] setup git
+
+         - [ ] TODO: review ssh key pairing and complete new section
+
+	 - [ ] initialize GIT repository & add, commit, and push initial changes
+
+	   1. git init
+	   2. edit gitignore file appropriately
+	   3. git add . (add everything)
+	   4. git commit -m $COMMIT_MESSAGE
+	   5. git remote add origin $REPO_ADDRESS
+	   6. git push -u origin master
+       - [ ] heroku deployment (minus database migration commands... see below)
+
+	     : heroku create
+     	     : git push heroku master
+
+	 - [ ] if changes made to databases
+   
+               : heroku run rake db:migrate (also)
+
+	 - [ ] Other useful heroku commands:
+
+	       : heroku rename $NEW_NAME
+ 	       : heroku open
+	       : heroku logs --tail
+ 	       : heroku run rails console
+	 
+   - [ ] [[http://guides.rubyonrails.org/command_line.html][Rails Guides]]
+   - [ ] [[http://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/][Authentication from Scratch]]
+   - [ ] [[http://stackoverflow.com/questions/5966776/rails-scaffold-without-the-css-file][configure rails not to create scaffold stylesheet]]
+
+* REMINDERS
+
+  - [ ] BE DELIBERATE
+  - [ ] BE ORGANIZED
+  - [ ] TAKE TIME
+  - [ ] DOCUMENT AS MUCH AS POSSIBLE
+  - [ ] learn TEST DRIVEN DEVELOPMENT!

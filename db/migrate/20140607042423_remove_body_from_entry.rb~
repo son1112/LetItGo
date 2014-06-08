@@ -1,0 +1,4 @@
+class RemoveBodyFromEntry < ActiveRecord::Migration
+  def change
+  end
+end

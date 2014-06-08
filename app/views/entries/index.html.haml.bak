@@ -1,0 +1,29 @@
+.content.container
+  %h2{:class => "section-title"} Messages:
+
+  .blue-box-light
+
+    %table
+      %tr
+        %th 
+        %th 
+        %th 
+        %th 
+        %th 
+        %th 
+        %th
+        %th
+        %th
+
+      - @entries.each do |activity|
+        %tr
+          %td= entry.title
+          %td= entry.subtitle
+          %td= entry.body
+          %td= link_to 'Show', entry
+          %td= link_to 'Edit', edit_entry_path(activity)
+          %td= link_to 'Destroy', entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    %br
+
+    = link_to 'New', new_entry_path

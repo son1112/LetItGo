@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>STET</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,500|Poiret+One|Dancing+Script|Special+Elite' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/pd-style.css" />
+  </head>
+
+  <body>
+    <div>
+      <div id="left">
+	<div class="blue right">
+	  <h1 class="title right">:p</h1>
+	  <strong>
+	    <p>Good morning </p>
+	    <p>Sweet dreams, </p>
+	    <p>I think you are aw</p>
+	  </strong>
+	</div>
+      </div>
+
+      <div id="right">
+	<div class="left">
+	  <h1 class="title left">d:</h1>
+	  <strong>
+	    <p>and good night.</p>
+	    <p> sleep tight.</p>
+	    <p>ful.</p>
+	  </strong>
+	  <h1 class="title left">q:</h1>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <strong>
+	  <p>esome.</p>
+	  <p>esome.</p>
+	  <p>esome.</p>
+	  <p>esome.</p>
+	  <p>fully beautiful.</p>
+	  <p>esome.</p>
+	  <p>esome.</p>
+	  <p>esome.</p>
+	  <p>ake.</p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	  <p>
+	    esome. 
+	  </p>
+	    </strong>
+	</div>
+      </div>
+  </body>
+
+</html>

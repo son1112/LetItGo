@@ -1,0 +1,1934 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Blog: STET</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Blog: STET"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-06-07T12:55+0000"/>
+<meta name="author" content="Ander"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Blog: STET</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Description</a></li>
+<li><a href="#sec-2">2 Development Documentation</a>
+<ul>
+<li><a href="#sec-2-1">2.1 CREATE a new Rails application</a></li>
+<li><a href="#sec-2-2">2.2 UPDATE the README file</a></li>
+<li><a href="#sec-2-3">2.3 TEST the skeletal application</a></li>
+<li><a href="#sec-2-4">2.4 UPDATE the Gemfile</a>
+<ul>
+<li><a href="#sec-2-4-1">2.4.1 Make Changes</a></li>
+<li><a href="#sec-2-4-2">2.4.2 Update the bundle</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5">2.5 START working on the application!</a>
+<ul>
+<li><a href="#sec-2-5-1">2.5.1 <b>ModelViewControl</b> Organization</a>
+<ul>
+<li><a href="#sec-2-5-1-1">2.5.1.1 MODEL</a>
+<ul>
+<li><a href="#sec-2-5-1-1-1">2.5.1.1.1 Models</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5-1-2">2.5.1.2 VIEW</a>
+<ul>
+<li><a href="#sec-2-5-1-2-1">2.5.1.2.1 Setup BOOTSTRAP</a></li>
+<li><a href="#sec-2-5-1-2-2">2.5.1.2.2 Skrollr</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5-1-3">2.5.1.3 Visual Design Concept</a></li>
+<li><a href="#sec-2-5-1-4">2.5.1.4 CONTROL</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5-2">2.5.2 GENERAL setup options</a>
+<ul>
+<li><a href="#sec-2-5-2-1">2.5.2.1 SCAFFOLDS</a></li>
+<li><a href="#sec-2-5-2-2">2.5.2.2 MODELS</a></li>
+<li><a href="#sec-2-5-2-3">2.5.2.3 CONTROLLERS</a></li>
+<li><a href="#sec-2-5-2-4">2.5.2.4 HELPERS</a></li>
+<li><a href="#sec-2-5-2-5">2.5.2.5 MAILERS</a></li>
+<li><a href="#sec-2-5-2-6">2.5.2.6 MIGRATIONS</a></li>
+<li><a href="#sec-2-5-2-7">2.5.2.7 RESOURCES</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5-3">2.5.3 Create views for each of the pages needed in app/views/&hellip;</a></li>
+<li><a href="#sec-2-5-4">2.5.4 Configure ROUTES</a></li>
+<li><a href="#sec-2-5-5">2.5.5 simple<sub>form</sub></a></li>
+<li><a href="#sec-2-5-6">2.5.6 mailer contact</a></li>
+<li><a href="#sec-2-5-7">2.5.7 Volunteer Application</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 </a>
+<ul>
+<li><a href="#sec-3-1">3.1 Research</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 REMINDERS</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+  STET: disregard a change
+</p>
+<p>
+  Create a weblog, comfortably accessible on mobile devices for "on the go" quips,
+  notes about my day; questions and comments.
+</p>
+<p>
+  What we need to look at for functionality:
+</p>
+<p>
+<sup>&ndash</sup>;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;06070259&mdash;^
+</p>
+<ul>
+<li><code>[&nbsp;]</code> We need USERs with authenticatable accounts
+
+<p>    
+    These users will have various access to update content and that's really
+    all that they need. However,
+</p>
+<ul>
+<li><code>[&nbsp;]</code> Admin vs normal user?
+
+<p>
+      Perhaps that won't be necessary. The only need for a user is to be able
+      to update content. Even an admin, at this point, will not need to change 
+      anything else.
+</p>
+<p>
+      Although, getting people to sign up for general user accounts for signing 
+      up for summer camp will be helpful for collection of contact data
+</p>
+</li>
+<li><code>[&nbsp;]</code> Content updating forms 
+        should 
+<ul>
+<li><code>[&nbsp;]</code> be able to have images added to content by users
+</li>
+<li><code>[&nbsp;]</code> accept HTML input 
+        OR, for what they are used to is WYSIWYG
+</li>
+<li><code>[&nbsp;]</code> WYSIWYG
+        or both&hellip;
+        in other words, select a word, push a button that makes it bold, italic, etc
+        Uggg, this is where this shit gets annoying. You end up building a bunch of nonsense
+        that actually makes it more complicated in a way, when it would be simpler to learn
+        some basic html&hellip; but that's my opinion. I also feel like this is where Wordpress
+        has gone a little haywire at times, adding markup where it's not needed, while
+        at the same time not allowing some user provided markup to pass through unless
+        placed within a &lt;code&gt; element.
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> Private content
+
+<ul>
+<li><code>[&nbsp;]</code> admin vs common user accounts
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> User profiles?
+
+</li>
+<li><code>[&nbsp;]</code> Summer Camp Registration model?
+
+</li>
+<li><code>[&nbsp;]</code> Volunteers/CCF
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> BLOG/NEWSfeed for news updates?
+
+</li>
+<li><code>[&nbsp;]</code> PAGEs for general website content
+</li>
+</ul>
+
+
+<p>
+v&ndash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;06070259&mdash;v
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Development Documentation</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> CREATE a new Rails application</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+<ul>
+<li><code>[X]</code> create a new application
+
+<pre class="example">
+rails new Application
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> RESEARCH Spring?
+
+<p>
+         Something new showed up. I'm not sure what to make of it, but if I experience 
+         problems, I'll return
+</p>
+<pre class="example">
+run  bundle exec spring binstub -all
+</pre>
+
+
+<pre class="example">
+* bin/rake: spring inserted
+* bin/rails: spring inserted
+</pre>
+
+
+</li>
+<li><code>[X]</code> rename application.css to application.css.scss
+</li>
+</ul>
+
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> UPDATE the README file</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+<ul>
+<li><code>[X]</code> mv, rm, or recreate the README file
+
+<pre class="example">
+mv README.rdoc README.org
+</pre>
+
+
+<p>
+      start making edits
+</p></li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> TEST the skeletal application</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+<ul>
+<li><code>[X]</code> basic rails server is functional?
+</li>
+</ul>
+
+
+<pre class="example">
+rails server
+</pre>
+
+
+<ul>
+<li><code>[-]</code> Something else new came up regarding 'Spring'
+
+<p>
+     <a href="https://github.com/rails/spring">Spring?</a>
+</p>
+<pre class="example">
+Warning: Running 'gem pristine --all' to regenerate your installed gemspecs
+ (and deleting then reinstalling your bundle if you use bundle --path) will
+ improve the startup performance of Spring.
+</pre>
+
+
+<ul>
+<li><code>[-]</code> run 'gem pristine &ndash;all
+
+<ul>
+<li><code>[-]</code> ERROR: While executing gem &hellip; (Gem::InstallError)
+
+<p>         
+         :invalid gem: No such file or directory @ rb<sub>sysopen</sub> - <i>home/son</i>.rvm/gems/ruby-1.9.2-p320/cache/minitest-1.6.0.gem
+</p>
+<ul>
+<li><code>[X]</code> update bundle
+
+<pre class="example">
+bundle update
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> solved?
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> restart server, see if same warning occurs
+
+<ul>
+<li><code>[&nbsp;]</code> same errors
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+<sup>&ndash</sup>;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;06070259&mdash;^
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> UPDATE the Gemfile</h3>
+<div class="outline-text-3" id="text-2-4">
+
+
+
+</div>
+
+<div id="outline-container-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1"><span class="section-number-4">2.4.1</span> Make Changes</h4>
+<div class="outline-text-4" id="text-2-4-1">
+
+
+<ul>
+<li><code>[X]</code> remove unnecessary comments
+
+</li>
+<li><code>[X]</code> update rails
+
+<pre class="example">
+gem 'rails', '4.1.0'
+</pre>
+
+
+</li>
+<li><code>[X]</code> specify explicit version for ruby
+
+<pre class="example">
+ruby '2.1.1'
+</pre>
+
+
+</li>
+<li><code>[X]</code> create groups for development and production databases (postgres/sqlite3)
+
+<pre class="example">
+group :development, :test do
+ gem 'sqlite3'
+end
+</pre>
+
+
+<pre class="example">
+#group :production do
+# gem 'pg', '0.15.1'
+# gem 'rails_12factor', '0.0.2'
+#end
+</pre>
+
+
+<ul>
+<li><code>[X]</code> remove "gem 'sqlite3'"
+
+</li>
+</ul>
+
+</li>
+<li><code>[X]</code> minor package updates
+
+<ul>
+<li><code>[X]</code> gem 'jquery-rails' 
+<pre class="example">
+gem 'jquery-rails', '3.0.4'
+</pre>
+
+<ul>
+<li><code>[X]</code> gem 'sass-rails', '~&gt; 4.0.0'
+<pre class="example">
+gem 'sass-rails', '4.0.3'
+</pre>
+
+<ul>
+<li><code>[X]</code> gem 'uglifier', '&gt;= 1.3.0'
+<pre class="example">
+gem 'uglifier', '2.1.1'
+</pre>
+
+<ul>
+<li><code>[X]</code> gem 'coffee-rails', '~&gt; 4.0.0'
+<pre class="example">
+gem 'coffee-rails', '4.0.1'
+</pre>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-4-2" class="outline-4">
+<h4 id="sec-2-4-2"><span class="section-number-4">2.4.2</span> Update the bundle</h4>
+<div class="outline-text-4" id="text-2-4-2">
+
+
+<ul>
+<li><code>[X]</code> UPDATE
+
+<pre class="example">
+bundle update
+</pre>
+
+
+</li>
+<li><code>[X]</code> INSTALL the updates
+
+<pre class="example">
+bundle install --without production
+</pre>
+
+
+<p>      
+      NOTE: all future updates only "bundle install" needed, unless and update 
+      is needed
+</p></li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> START working on the application!</h3>
+<div class="outline-text-3" id="text-2-5">
+
+
+<p>
+   [ This area needs clean up, organization and clarity ]
+</p>
+
+</div>
+
+<div id="outline-container-2-5-1" class="outline-4">
+<h4 id="sec-2-5-1"><span class="section-number-4">2.5.1</span> <b>ModelViewControl</b> Organization</h4>
+<div class="outline-text-4" id="text-2-5-1">
+
+
+
+</div>
+
+<div id="outline-container-2-5-1-1" class="outline-5">
+<h5 id="sec-2-5-1-1"><span class="section-number-5">2.5.1.1</span> MODEL</h5>
+<div class="outline-text-5" id="text-2-5-1-1">
+
+
+
+</div>
+
+<div id="outline-container-2-5-1-1-1" class="outline-6">
+<h6 id="sec-2-5-1-1-1"><span class="section-number-6">2.5.1.1.1</span> Models</h6>
+<div class="outline-text-6" id="text-2-5-1-1-1">
+
+
+<ul>
+<li id="sec-2-5-1-1-1-1">SAMPLE<br/>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Model</th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th></tr>
+</thead>
+<tbody>
+<tr><td class="left"></td><td class="left">attribute</td><td class="left">example</td><td class="left">type</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"></td><td class="left">id</td><td class="left">1</td><td class="left">integer</td></tr>
+<tr><td class="left"></td><td class="left">name</td><td class="left">"Ander Son"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">username</td><td class="left">"Son"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">email</td><td class="left">"son@lincolnix.net"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">age</td><td class="left">33</td><td class="left">integer</td></tr>
+<tr><td class="left"></td><td class="left">location</td><td class="left">"Omaha, NE"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">pictures</td><td class="left">[ "one.jpg" , "two.jpg" ]</td><td class="left">array[strings]</td></tr>
+<tr><td class="left"></td><td class="left">connections/friends</td><td class="left">[ 2 , 3 , 12 ]</td><td class="left">array[user<sub>ids]</sub></td></tr>
+</tbody>
+</table>
+
+
+
+
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-5-1-1-1-2">PAGEs<br/>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">PAGES</th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th></tr>
+</thead>
+<tbody>
+<tr><td class="left"></td><td class="left">attribute</td><td class="left">example</td><td class="left">type</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"></td><td class="left">id</td><td class="left">1</td><td class="left">integer</td></tr>
+<tr><td class="left"></td><td class="left">title</td><td class="left">"Home"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">description</td><td class="left">"Prairie Hill Learning Center"</td><td class="left">string</td></tr>
+</tbody>
+</table>
+
+
+
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-5-1-1-1-3">USERs<br/>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">User</th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th></tr>
+</thead>
+<tbody>
+<tr><td class="left"></td><td class="left">attribute</td><td class="left">example</td><td class="left">type</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"></td><td class="left">id</td><td class="left">1</td><td class="left">integer</td></tr>
+<tr><td class="left"></td><td class="left">name</td><td class="left">"Ander Son"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">username</td><td class="left">"Son"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">email</td><td class="left">"son@lincolnix.net"</td><td class="left">string</td></tr>
+</tbody>
+</table>
+
+
+<p>
+       Setting up a User model with Devise creates only attributes for email and
+       encrypted password, plus some others that aren't necessarily important to
+       the surface use of our model. Following the Devise <a href="https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address">documentation</a> for adding
+       a new attribute, for example:
+</p>
+<ul>
+<li><code>[X]</code> Create username field
+
+<ul>
+<li><code>[X]</code> create a migration
+
+<pre class="example">
+rails generate migration AddUsernameToUsers username:string:uniq
+</pre>
+
+
+</li>
+<li><code>[X]</code> migrate the database
+
+<pre class="example">
+rake db:migrate
+</pre>
+
+
+</li>
+<li><code>[X]</code> Modify application<sub>controller</sub>.rb
+
+<ul>
+<li><code>[X]</code> add username, email, password, password confirmation and
+             remember me to configure<sub>permitted</sub><sub>parameters</sub>
+
+<p>
+             see also <a href="https://github.com/plataformatec/devise#strong-parameters">strong parameters documentation for Devise</a>
+</p>
+<pre class="example">
+class ApplicationController &lt; ActionController::Base
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+</pre>
+
+
+<pre class="example">
+  protected
+</pre>
+
+
+<pre class="example">
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
+  end
+end
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><code>[-]</code> Create a login virtual attribute in the User model
+
+<ul>
+<li><code>[X]</code> Add login as an attr<sub>accessor</sub> in app/models/user.rb
+
+<pre class="example">
+# Virtual attribute for authenticating by either username or email
+# This is in addition to a real persisted field like 'username'
+attr_accessor :login
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> if you will use this variable somewhere else in the code
+
+<pre class="example">
+def login=(login)
+  @login = login
+end
+
+def login
+  @login || self.username || self.email
+end
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+<li><code>[-]</code> Tell Devise to use :login in the authentication<sub>keys</sub>
+
+<ul>
+<li><code>[X]</code> Modify config/initializers/devise.rb to have:
+
+<pre class="example">
+config.authentication_keys = [ :login ]
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> If you are using multiple models with Devise, it is best to set 
+           the authentication<sub>keys</sub> on the model itself if the keys may differ:
+
+<pre class="example">
+devise :database_authenticatable, :registerable,
+       :recoverable, :rememberable, :trackable, 
+       :validatable, :authentication_keys =&gt; [:login]
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+<li><code>[-]</code> Overwrite Devise's find<sub>for</sub><sub>database</sub><sub>authentication</sub> method in User model (user.rb)
+
+<p>
+         Because we want to change the behavior of the login action, we have to 
+         overwrite the find<sub>for</sub><sub>database</sub><sub>authentication</sub> method. The methods' 
+         stack works like this : find<sub>for</sub><sub>database</sub><sub>authentication</sub> calls 
+         find<sub>for</sub><sub>authentication</sub> which calls find<sub>first</sub><sub>by</sub><sub>auth</sub><sub>conditions</sub>. 
+         Overriding the find<sub>for</sub><sub>database</sub><sub>authentication</sub> method allows you to 
+         edit database authentication ; overriding find<sub>for</sub><sub>authentication</sub> allows 
+         you to redefine authentication at a specific point (such as token, LDAP or database). 
+         Finally, if you override the find<sub>first</sub><sub>by</sub><sub>auth</sub><sub>conditions</sub> method, you 
+         can customize finder methods (such as authentication, account unlocking 
+         or password recovery)
+</p>
+<ul>
+<li><code>[-]</code> For Active Record:
+
+<pre class="example">
+# app/models/user.rb
+</pre>
+
+
+<pre class="example">
+    def self.find_first_by_auth_conditions(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value =&gt; login.downcase }]).first
+      else
+        where(conditions).first
+      end
+    end
+</pre>
+
+
+<pre class="example">
+#### This is the correct method you override with the code above
+#### def self.find_for_database_authentication(warden_conditions)
+#### end
+</pre>
+
+
+<ul>
+<li><code>[&nbsp;]</code> Be sure to add case insensitivity to your validations on :username:
+
+<pre class="example">
+# app/models/user.rb
+</pre>
+
+
+<pre class="example">
+validates :username,
+  :uniqueness =&gt; {
+    :case_sensitive =&gt; false
+  },
+  :format =&gt; { ... } # etc.
+</pre>
+
+
+</li>
+<li><code>[X]</code> Alternatively, change the find conditions like so:
+
+<pre class="example">
+# when allowing distinct User records with, e.g., "username" and "UserName"...
+where(conditions).where(["username = :value OR lower(email) = lower(:value)", { :value =&gt; login }]).first
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><code>[X]</code> Update your views
+
+<pre class="example">
+rails g devise:views
+</pre>
+
+
+</li>
+<li><code>[X]</code> Modify the views
+
+<p>
+         app/views/devise/sessions/new.html.erb
+</p>
+<ul>
+<li><code>[X]</code> remove
+
+<pre class="example">
+&lt;div&gt;&lt;%= f.label :email %&gt;&lt;br /&gt;
+&lt;%= f.email_field :email %&gt;&lt;/div&gt;
+</pre>
+
+
+</li>
+<li><code>[X]</code> add
+
+<pre class="example">
+&lt;div&gt;&lt;%= f.label :login %&gt;&lt;br/&gt;
+&lt;%= f.text_field :login %&gt;&lt;/div&gt;
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> Manipulate the :login label that Rails will display
+
+</li>
+<li><code>[&nbsp;]</code> Allow users to recover their password or confirm their account using
+         either username or email address
+</li>
+</ul>
+
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-5-1-1-1-4">CONTENTs?<br/>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Content</th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th></tr>
+</thead>
+<tbody>
+<tr><td class="left"></td><td class="left">attribute</td><td class="left">example</td><td class="left">type</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"></td><td class="left">id</td><td class="left">1</td><td class="left">integer</td></tr>
+<tr><td class="left"></td><td class="left">title</td><td class="left">"News"</td><td class="left">string</td></tr>
+<tr><td class="left"></td><td class="left">content</td><td class="left">"The Children's Country Fair is coming up&hellip;"</td><td class="left">text</td></tr>
+<tr><td class="left"></td><td class="left">page</td><td class="left">"Home"</td><td class="left">string</td></tr>
+</tbody>
+</table>
+
+
+
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-5-1-1-1-5">POSTs<br/>
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-5-1-2" class="outline-5">
+<h5 id="sec-2-5-1-2"><span class="section-number-5">2.5.1.2</span> VIEW</h5>
+<div class="outline-text-5" id="text-2-5-1-2">
+
+
+<p>
+     When in doubt, make sure a view exists for the page you are trying to route!
+</p>
+
+</div>
+
+<div id="outline-container-2-5-1-2-1" class="outline-6">
+<h6 id="sec-2-5-1-2-1"><span class="section-number-6">2.5.1.2.1</span> Setup BOOTSTRAP</h6>
+<div class="outline-text-6" id="text-2-5-1-2-1">
+
+
+<ul>
+<li id="sec-2-5-1-2-1-1">Install Bootstrap<br/>
+
+<ul>
+<li><code>[X]</code> Install the Bootstrap Gem 
+
+<pre class="example">
+gem 'bootstrap-sass'
+</pre>
+
+
+<pre class="example">
+bundle install
+</pre>
+
+
+</li>
+<li><code>[X]</code> Create/add to app/assets/stylesheets/bootstrap<sub>and</sub><sub>customization</sub>.css.scss
+
+<pre class="example">
+@import 'bootstrap';
+</pre>
+
+
+</li>
+<li><code>[X]</code> Restart your server
+</li>
+</ul>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-5-1-2-1-2">Add a container to our app<br/>
+
+<ul>
+<li><code>[X]</code> modify app/views/layouts/application.html.erb, varying links as necessary
+
+<ul>
+<li>application.html.erb is a wrapper for each page
+
+<pre class="example">
+&lt;%= link_to "Home", root_path %&gt;
+&lt;%= link_to "About", about_path %&gt;
+&lt;%= link_to "Contact", contact_path %&gt;
+&lt;%= link_to "Sign Up", sign_up_path %&gt;
+&lt;%= link_to "Log In", log_in_path %&gt;
+&lt;div class="container"&gt;
+    &lt;%= yield %&gt;
+&lt;/div&gt;
+</pre>
+
+
+</li>
+<li><code>[X]</code> <b>ERROR</b> SOLVED
+
+<ul>
+<li><code>[X]</code> When in doubt, check for outdated gems
+
+<pre class="example">
+bundle outdated
+</pre>
+
+
+<ul>
+<li><code>[X]</code> trials
+
+<pre class="example">
+NoMethodError in Pages#welcome
+</pre>
+
+
+<pre class="example">
+Showing /home/son/RAILS-dev/son/nebraska-dating/app/views/layouts/application.html.erb where line #5 raised:
+</pre>
+
+
+<pre class="example">
+undefined method 'environment' for nil:NilClass
+ (in /home/son/RAILS-dev/son/nebraska-dating/app/assets/stylesheets/bootstrap_and_customizations.css.scss)
+</pre>
+
+
+<pre class="example">
+&lt;%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" =&gt; true %&gt;
+</pre>
+
+
+<p>
+         My first search found this stackoverflow post:
+         <a href="http://stackoverflow.com/questions/22392862/undefined-method-environment-for-nilnilclass-when-importing-bootstrap">http://stackoverflow.com/questions/22392862/undefined-method-environment-for-nilnilclass-when-importing-bootstrap</a>
+</p>
+<p>
+         It seems to have something to do with a adding @import 'bootstrap': line
+</p>
+<p>
+         There are several suggestions posed. May have something to do with sass-rails version being used.
+</p>
+<ul>
+<li><code>[X]</code> SOLVED updated sass-rails to 4.0.3
+
+</li>
+<li><code>[X]</code> check for <a href="./outdated-gems.html">outdated gems</a>
+
+<pre class="example">
+bundle outdated
+</pre>
+
+
+<p>
+           It looks like I have quite a few outdated gems! Not sure if I should 
+           update all of them or not.
+</p>
+</li>
+<li><code>[X]</code> update the bundle
+
+<pre class="example">
+bundle update
+</pre>
+
+
+<p>
+           same error
+</p>
+</li>
+<li><code>[X]</code> restart the server
+
+<p>
+           same error
+</p></li>
+</ul>
+
+</li>
+</ul>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-5-1-2-1-3">Create a <sub>header</sub>.html.erb Partial<br/>
+
+<p>
+       <a href="http://guides.rubyonrails.org/layouts_and_rendering.html">Layouts and Rendering</a>
+</p>
+<ul>
+<li><code>[X]</code> require Bootstrap's JavaScript, after jquery<sub>ujs</sub>
+
+<p>
+             app/assets/javascripts/application.js
+</p>
+<pre class="example">
+//= require jquery_ujs
+</pre>
+
+<p>             &hellip;
+</p><pre class="example">
+//= require bootstrap
+</pre>
+
+<p>             &hellip;
+</p><pre class="example">
+//= require turbolinks
+</pre>
+
+
+</li>
+<li><code>[X]</code> app/views/layouts/<sub>header</sub>.html.erb
+
+</li>
+<li><code>[-]</code> create a link to the partial in application.html.erb
+
+<ul>
+<li><code>[X]</code> 
+
+<pre class="example">
+&lt;%= render 'layouts/header' %&gt;
+</pre>
+
+
+<ul>
+<li><code>[&nbsp;]</code> Make a habit of keeping things clean by using partials
+
+</li>
+</ul>
+
+</li>
+<li><code>[X]</code> add a navigation bar in <sub>header</sub>.html.erb
+
+<p>
+         SIMPLE NAV with tabs:
+</p>
+<pre class="example">
+&lt;ul class="nav nav-tabs"&gt;
+  &lt;li&gt;&lt;%= link_to "ABOUT", about_path %&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;%= link_to "NEWS", news_path %&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;%= link_to "PROGRAMS", programs_path %&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+
+<p>
+         NAVBAR:
+</p>
+<pre class="example">
+&lt;nav class="navbar navbar-default" role="navigation"&gt;
+  &lt;!-- Brand and toggle get grouped for better mobile display --&gt;
+  &lt;div class="navbar-header"&gt;
+    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"&gt;
+      &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+      &lt;span class="icon-bar"&gt;&lt;/span&gt;
+      &lt;span class="icon-bar"&gt;&lt;/span&gt;
+      &lt;span class="icon-bar"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;a class="navbar-brand" href="#"&gt;Nebraska Dating&lt;/a&gt;
+  &lt;/div&gt;
+</pre>
+
+
+<pre class="example">
+  &lt;!-- Collect the nav links, forms, and other content for toggling --&gt;
+  &lt;div class="collapse navbar-collapse navbar-ex1-collapse"&gt;
+    &lt;ul class="nav navbar-nav navbar-right"&gt;
+      &lt;li&gt;&lt;%= link_to "Home", root_path %&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;%= link_to "About", about_path %&gt;&lt;/li&gt; 
+    &lt;/ul&gt;
+  &lt;/div&gt;&lt;!-- /.navbar-collapse --&gt;
+&lt;/nav&gt;
+</pre>
+
+
+</li>
+<li><code>[X]</code> Add Viewport
+
+<p>
+         views/layouts/application.html.erb
+</p>
+<pre class="example">
+&lt;meta name="viewport" content="width=device-width, intial-scale=1.0"&gt;
+</pre>
+
+</li>
+</ul>
+
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2-5-1-2-2" class="outline-6">
+<h6 id="sec-2-5-1-2-2"><span class="section-number-6">2.5.1.2.2</span> Skrollr</h6>
+<div class="outline-text-6" id="text-2-5-1-2-2">
+
+
+<p>
+      Skrollr is a stand-alone parallax scrolling library for mobile and desktop.
+      The skrollr-rails gem integrates skrollr with the Rails asset pipeline for 
+      ease of use and version control.
+</p>
+<p>
+      <a href="https://github.com/reed/skrollr-rails">https://github.com/reed/skrollr-rails</a>
+</p>
+<ul>
+<li><code>[X]</code> install
+
+<pre class="example">
+gem 'skrollr-rails'
+</pre>
+
+
+<pre class="example">
+bundle install
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> setup
+
+<p>
+        app/assets/javascripts/application.js
+</p>
+<pre class="example">
+//= require skrollr
+//= require skrollr.ie
+//= require skrollr.menu
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> separate skrollr-body
+
+<p>
+        Place #skrollr-body around %yield
+</p>
+<pre class="example">
+&lt;div id="skrollr-body"&gt;
+  &lt;%= yield %&gt;
+&lt;/div&gt;
+</pre>
+
+</li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-5-1-3" class="outline-5">
+<h5 id="sec-2-5-1-3"><span class="section-number-5">2.5.1.3</span> Visual Design Concept</h5>
+<div class="outline-text-5" id="text-2-5-1-3">
+
+
+<p>
+      based off of current website, built on wordpress
+</p>
+<ul>
+<li><code>[&nbsp;]</code> all built-in variable changes need to go above '@import 'bootstrap'
+</li>
+</ul>
+
+
+<ul>
+<li id="sec-2-5-1-3-1">Aesthetic<br/>
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-5-1-3-2">Functionality<br/>
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2-5-1-4" class="outline-5">
+<h5 id="sec-2-5-1-4"><span class="section-number-5">2.5.1.4</span> CONTROL</h5>
+<div class="outline-text-5" id="text-2-5-1-4">
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-5-2" class="outline-4">
+<h4 id="sec-2-5-2"><span class="section-number-4">2.5.2</span> GENERAL setup options</h4>
+<div class="outline-text-4" id="text-2-5-2">
+
+
+
+</div>
+
+<div id="outline-container-2-5-2-1" class="outline-5">
+<h5 id="sec-2-5-2-1"><span class="section-number-5">2.5.2.1</span> SCAFFOLDS</h5>
+<div class="outline-text-5" id="text-2-5-2-1">
+
+
+<ul>
+<li><code>[X]</code> Disable scaffold stylesheet creation because it overrides Bootstrap CSS
+
+<p>
+       Add the following to config/application.rb
+</p>
+<pre class="example">
+config.generators do |g|
+  g.stylesheets false
+end
+</pre>
+
+
+</li>
+<li><code>[-]</code> Generate a scaffold for each model
+
+<pre class="example">
+rails generate scaffold Resource attribute:type attribute:type
+</pre>
+
+
+<ul>
+<li><code>[X]</code> PAGE
+
+<pre class="example">
+rails generate scaffold Page title:string description:string index
+</pre>
+
+
+<ul>
+<li><code>[X]</code> Migrate the database
+
+<pre class="example">
+rake db:migrate
+</pre>
+
+
+</li>
+<li><code>[X]</code> restart the server
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> CONTENT
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+
+<ul>
+<li><code>[-]</code> USER
+
+<ul>
+<li><code>[X]</code> setup Devise
+
+<ul>
+<li><code>[X]</code> add the Devise gem
+
+<pre class="example">
+gem 'devise'
+</pre>
+
+
+</li>
+<li><code>[X]</code> update the bundle
+
+<pre class="example">
+bundle install
+</pre>
+
+
+</li>
+<li><code>[X]</code> install Devise
+
+<pre class="example">
+rails generate devise:install
+</pre>
+
+
+</li>
+<li><code>[X]</code> Ensure you have defined default url options in your environments
+             files. Here is an example of default<sub>url</sub><sub>options</sub> appropriate for a 
+             development environment in config/environments/development.rb:
+
+<ul>
+<li><code>[X]</code> development
+
+<pre class="example">
+config.action_mailer.default_url_options = { host: 'localhost:3000' }
+</pre>
+
+
+<p>
+             In production, :host should be set to the actual host of your application
+             config/environments/production.rb
+</p>
+<ul>
+<li><code>[X]</code> production
+
+<pre class="example">
+config.action_mailer.default_url_options = { host: 'http://www.prairiehill.com' }
+</pre>
+
+
+</li>
+<li><code>[X]</code> Ensure you have defined root<sub>url</sub> to <b>something</b> in your config/routes.rb
+
+<pre class="example">
+root "pages#home"
+</pre>
+
+
+</li>
+<li><code>[X]</code> Ensure you have flash messages in app/views/layouts/application.html.erb
+
+<pre class="example">
+&lt;% flash.each do |name, msg| %&gt;
+    &lt;%= content_tag(:div, msg, class: "alert alert-info") %&gt;
+&lt;% end %&gt;
+</pre>
+
+
+</li>
+<li><code>[X]</code> Set Precompile to False
+             config/application.rb
+
+<p>
+             Place the following ABOVE the module APP definition!
+</p>
+<pre class="example">
+config.assets.initialize_on_precompile = false
+</pre>
+
+
+</li>
+<li><code>[X]</code> Copy Devise views (for customization) to your app
+
+<pre class="example">
+rails g devise:views
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+<li><code>[X]</code> Set up a USER model
+
+<ul>
+<li><code>[X]</code> generate a user model
+
+<pre class="example">
+rails g devise user
+</pre>
+
+
+<ul>
+<li>if you made a mistake, you can destroy a model
+
+<pre class="example">
+rails destroy devise user 
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+<li><code>[X]</code> migrate your database
+
+<pre class="example">
+rake db:migrate
+</pre>
+
+
+</li>
+<li><code>[X]</code> restart the server
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> 
+
+</li>
+</ul>
+
+<p>         Question: Use Devise or set up authentication from scratch?
+</p>
+<p>
+         I have set up and used devise for previous applications. 
+         For thorough learning purposes here, I am going to learn to 
+         create user authentication from scratch, following this guide:
+</p>
+<p>
+         <a href="http://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/">Authentication from Scratch</a>
+</p>
+<p>
+         <span style="text-decoration:underline;">The basics (from SitePoint):</span>
+</p>
+<p>
+         <b>Sign-up</b>: Create a new <a href="#User">User</a>. This user will register with a username, 
+         password (which will be encrypted in the database), email, etc.
+</p>
+<p>
+         <b>Login</b>: Allow a user to sign in with his/her valid username and password.
+         The authentication process happens by matching the username and password
+         in the database, allowing the user access to the protected actions only
+         if the given information matches the recorded values successfully.
+         If not, the user will be redirected to the login page again.
+</p>
+<p>
+         <b>Access Restriction</b>: Create a session to hold the authenticated user
+         ID after login, so navigation through additional protected actions can
+         be done easily by just checking the userID in the current session.
+</p>
+<p>
+         <b>Logout</b>: Allow the user to sign out and set the authenticated userID
+         in session file to nil.
+</p>
+<ul>
+<li><code>[X]</code> Add bcrypt to the Gemfile and update
+
+<pre class="example">
+gem 'bcrypt'
+</pre>
+
+
+<pre class="example">
+bundle install
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> Generate User scaffold
+
+<pre class="example">
+rails generate scaffold User name:string username:string email:string age:integer location:string pictures:text friends:text encrypted_password:string salt:string timestamps:string
+</pre>
+
+
+<p>
+           Note: <a href="http://www.therailsway.com/2009/8/3/users-and-passwords/">Salting</a> is a way to prevent being opent to <a href="http://en.wikipedia.org/wiki/Rainbow_table">rainbow attacks</a>. 
+           It stores a small random value against each of your users and adds
+           that to the password before hashing it.
+</p>
+<ul>
+<li><code>[&nbsp;]</code> what type should the salt be?
+
+<p>             
+             string?
+</p>
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> Migrate the database
+</li>
+</ul>
+
+
+<pre class="example">
+rake db:migrate
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-2-2" class="outline-5">
+<h5 id="sec-2-5-2-2"><span class="section-number-5">2.5.2.2</span> MODELS</h5>
+<div class="outline-text-5" id="text-2-5-2-2">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-2-3" class="outline-5">
+<h5 id="sec-2-5-2-3"><span class="section-number-5">2.5.2.3</span> CONTROLLERS</h5>
+<div class="outline-text-5" id="text-2-5-2-3">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-2-4" class="outline-5">
+<h5 id="sec-2-5-2-4"><span class="section-number-5">2.5.2.4</span> HELPERS</h5>
+<div class="outline-text-5" id="text-2-5-2-4">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-2-5" class="outline-5">
+<h5 id="sec-2-5-2-5"><span class="section-number-5">2.5.2.5</span> MAILERS</h5>
+<div class="outline-text-5" id="text-2-5-2-5">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-2-6" class="outline-5">
+<h5 id="sec-2-5-2-6"><span class="section-number-5">2.5.2.6</span> MIGRATIONS</h5>
+<div class="outline-text-5" id="text-2-5-2-6">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-2-7" class="outline-5">
+<h5 id="sec-2-5-2-7"><span class="section-number-5">2.5.2.7</span> RESOURCES</h5>
+<div class="outline-text-5" id="text-2-5-2-7">
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-5-3" class="outline-4">
+<h4 id="sec-2-5-3"><span class="section-number-4">2.5.3</span> Create views for each of the pages needed in app/views/&hellip;</h4>
+<div class="outline-text-4" id="text-2-5-3">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-4" class="outline-4">
+<h4 id="sec-2-5-4"><span class="section-number-4">2.5.4</span> Configure ROUTES</h4>
+<div class="outline-text-4" id="text-2-5-4">
+
+
+<ul>
+<li><code>[X]</code> Add root route to config/routes.rb
+
+<pre class="example">
+root "pages#welcome"
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> create paths for desired routes
+
+<pre class="example">
+get "about" =&gt; "pages#about"
+get "contact" =&gt; "pages#contact"
+get "sign_up" =&gt; "pages#sign_up"
+get "log_in" =&gt; "pages#log_in"
+</pre>
+
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-5" class="outline-4">
+<h4 id="sec-2-5-5"><span class="section-number-4">2.5.5</span> simple<sub>form</sub></h4>
+<div class="outline-text-4" id="text-2-5-5">
+
+
+<ul>
+<li><code>[&nbsp;]</code> gem 'simple<sub>form'</sub>
+
+</li>
+<li><code>[&nbsp;]</code> bundle install
+
+</li>
+<li><code>[&nbsp;]</code> rails g simple<sub>form</sub>:install &ndash;bootstrap
+
+<p>
+       Be sure to have a copy of the Bootstrap stylesheet available on your
+       application, you can get it on <a href="http://twitter.github.com/bootstrap">http://twitter.github.com/bootstrap</a>.
+</p>
+<p>
+       Inside your views, use the 'simple<sub>form</sub><sub>for'</sub> with one of the Bootstrap form
+       classes, '.form-horizontal', '.form-inline', '.form-search' or
+       '.form-vertical', as the following:
+</p>
+<p>
+       = simple<sub>form</sub><sub>for</sub>(@user, html: {class: 'form-horizontal' }) do |form|
+</p></li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-6" class="outline-4">
+<h4 id="sec-2-5-6"><span class="section-number-4">2.5.6</span> mailer contact</h4>
+<div class="outline-text-4" id="text-2-5-6">
+
+
+<p>
+    <a href="http://rubyonrailshelp.wordpress.com/2014/01/08/rails-4-simple-form-and-mail-form-to-make-contact-form/">http://rubyonrailshelp.wordpress.com/2014/01/08/rails-4-simple-form-and-mail-form-to-make-contact-form/</a>
+</p>
+<p>
+    set up successfully in development
+</p>
+<ul>
+<li><code>[&nbsp;]</code> change heroku configs to prairiehill email authentication for production
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5-7" class="outline-4">
+<h4 id="sec-2-5-7"><span class="section-number-4">2.5.7</span> Volunteer Application</h4>
+<div class="outline-text-4" id="text-2-5-7">
+
+
+<ul>
+<li><code>[&nbsp;]</code> Users
+
+<ul>
+<li><code>[&nbsp;]</code> Devise
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> Model
+</li>
+</ul>
+
+
+
+
+<ul>
+<li><code>[&nbsp;]</code> View
+
+</li>
+<li><code>[&nbsp;]</code> Control
+</li>
+</ul>
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span></h2>
+<div class="outline-text-2" id="text-3">
+
+
+<ul>
+<li><code>[&nbsp;]</code> come up with a clever name
+</li>
+<li><code>[&nbsp;]</code> set up sonix server to host production
+</li>
+<li><code>[X]</code> develop this document into a template for future application guidance
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Research</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+<ul>
+<li><code>[&nbsp;]</code> TDD(Test Driven Development)
+</li>
+<li><code>[&nbsp;]</code> agile
+</li>
+<li><code>[&nbsp;]</code> organizational methods
+</li>
+<li><code>[&nbsp;]</code> payment servicing
+</li>
+<li><code>[-]</code> hosting rails production app on debian server
+<ul>
+<li><code>[-]</code> setup for easy pushing equivalent to heroku setup
+
+<ul>
+<li><code>[X]</code> install Rails
+</li>
+<li><code>[X]</code> install Ruby
+</li>
+<li><code>[X]</code> install sqlite3
+</li>
+<li><code>[&nbsp;]</code> setup git
+
+<ul>
+<li><code>[&nbsp;]</code> TODO: review ssh key pairing and complete new section
+
+</li>
+<li><code>[&nbsp;]</code> initialize GIT repository &amp; add, commit, and push initial changes
+
+<ol>
+<li>git init
+</li>
+<li>edit gitignore file appropriately
+</li>
+<li>git add . (add everything)
+</li>
+<li>git commit -m $COMMIT<sub>MESSAGE</sub>
+</li>
+<li>git remote add origin $REPO<sub>ADDRESS</sub>
+</li>
+<li>git push -u origin master
+</li>
+</ol>
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> heroku deployment (minus database migration commands&hellip; see below)
+
+<pre class="example">
+heroku create
+git push heroku master
+</pre>
+
+
+<ul>
+<li><code>[&nbsp;]</code> if changes made to databases
+
+<pre class="example">
+heroku run rake db:migrate (also)
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> Other useful heroku commands:
+
+<pre class="example">
+heroku rename $NEW_NAME
+heroku open
+heroku logs --tail
+heroku run rails console
+</pre>
+
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><code>[&nbsp;]</code> <a href="http://guides.rubyonrails.org/command_line.html">Rails Guides</a>
+</li>
+<li><code>[&nbsp;]</code> <a href="http://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/">Authentication from Scratch</a>
+</li>
+<li><code>[&nbsp;]</code> <a href="http://stackoverflow.com/questions/5966776/rails-scaffold-without-the-css-file">configure rails not to create scaffold stylesheet</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> REMINDERS</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<ul>
+<li><code>[&nbsp;]</code> BE DELIBERATE
+</li>
+<li><code>[&nbsp;]</code> BE ORGANIZED
+</li>
+<li><code>[&nbsp;]</code> TAKE TIME
+</li>
+<li><code>[&nbsp;]</code> DOCUMENT AS MUCH AS POSSIBLE
+</li>
+<li><code>[&nbsp;]</code> learn TEST DRIVEN DEVELOPMENT!
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

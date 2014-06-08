@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>STET</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+
+
+    <div id="content_div">
+      <div id="left">
+
+	<div class="blue right"
+	     data-0="opacity:1;"
+	     data-200="opacity:0;"
+	     >
+	  <h1 class="title right">:p</h1>
+	  <strong>
+	    <p>Good morning, </p>
+	    <p>Darling. </p>
+	  </strong>
+	</div>
+
+	<h1 id="new-button" 
+	    class="pink right"
+	    data-0="font-size:40px;"
+	    data-2000="font-size:1000px;"
+	    >
+	  <%= link_to '+', new_entry_path %></h1>
+
+      </div>
+
+
+	<div id="right">
+	  <div class="left">
+
+	    <h1 class="title left">d:</h1>
+	    <strong>
+	      <p>and good night.</p>
+	      <p> Sweet dreams.</p>
+	    </strong>
+
+      <div id="skrollr-body">
+	    <div id="page">
+	      <%= yield %>
+	    </div>
+
+	  </div>  
+	</div>
+      </div>
+
+    </div>
+
+    <script>
+     (function($){
+       skrollr.init({
+	 forceHeight: false,
+	 smoothScrolling: false
+       }).refresh();
+     } (jQuery));
+    </script>
+
+  </body>
+</html>

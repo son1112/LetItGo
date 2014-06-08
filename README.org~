@@ -78,15 +78,14 @@ v-----------------------------------------------------------------------------06
 
      
 
+
 ** UPDATE the README file
 
    - [X] mv, rm, or recreate the README file
 
-     I'm now using the NEW app template found in RAILS-dev directory
+      : mv README.rdoc README.org
 
-  : mv README.rdoc README.org
-
-   start making edits
+      start making edits
 
 
 ** TEST the skeletal application
@@ -119,6 +118,7 @@ v-----------------------------------------------------------------------------06
 
        - [ ] same errors
 
+^-----------------------------------------------------------------------------06070259---^
 
 ** UPDATE the Gemfile
 
@@ -140,10 +140,10 @@ v-----------------------------------------------------------------------------06
           :  gem 'sqlite3'
           : end
 
-	  : group :production do
-	  :  gem 'pg', '0.15.1'
-	  :  gem 'rails_12factor', '0.0.2'
-	  : end
+	  : #group :production do
+	  : # gem 'pg', '0.15.1'
+	  : # gem 'rails_12factor', '0.0.2'
+	  : #end
      
      - [X] remove "gem 'sqlite3'"
 
@@ -174,6 +174,7 @@ v-----------------------------------------------------------------------------06
 
 ** START working on the application!
 
+   [ This area needs clean up, organization and clarity ]
 
 *** *ModelViewControl* Organization
 
@@ -534,7 +535,39 @@ v-----------------------------------------------------------------------------06
 
 	 : <meta name="viewport" content="width=device-width, intial-scale=1.0">
 
-***** Visual Design Concept
+***** Skrollr
+
+      Skrollr is a stand-alone parallax scrolling library for mobile and desktop.
+      The skrollr-rails gem integrates skrollr with the Rails asset pipeline for 
+      ease of use and version control.
+
+      https://github.com/reed/skrollr-rails
+
+      - [X] install
+
+	: gem 'skrollr-rails'
+
+	: bundle install
+
+      - [ ] setup
+
+	app/assets/javascripts/application.js
+
+	: //= require skrollr
+	: //= require skrollr.ie
+	: //= require skrollr.menu
+
+      - [ ] separate skrollr-body
+
+	Place #skrollr-body around %yield
+
+	: <div id="skrollr-body">
+	:   <%= yield %>
+	: </div>
+
+
+
+**** Visual Design Concept
 
       based off of current website, built on wordpress
 

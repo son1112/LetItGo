@@ -1,60 +1,8 @@
-Blog: STET
+LetItGo: Personal communication application for River and Phoenix
 
 * Description
 
-  STET: disregard a change
-
-  Create a weblog, comfortably accessible on mobile devices for "on the go" quips,
-  notes about my day; questions and comments.
-
-  What we need to look at for functionality:
-
-^-----------------------------------------------------------------------------06070259---^
-
-  - [ ] We need USERs with authenticatable accounts
-    
-    These users will have various access to update content and that's really
-    all that they need. However,
-
-    - [ ] Admin vs normal user?
-
-      Perhaps that won't be necessary. The only need for a user is to be able
-      to update content. Even an admin, at this point, will not need to change 
-      anything else.
-
-      Although, getting people to sign up for general user accounts for signing 
-      up for summer camp will be helpful for collection of contact data
-
-    - [ ] Content updating forms 
-        should 
-      - [ ] be able to have images added to content by users
-      - [ ] accept HTML input 
-	OR, for what they are used to is WYSIWYG
-      - [ ] WYSIWYG
-	or both...
-	in other words, select a word, push a button that makes it bold, italic, etc
-	Uggg, this is where this shit gets annoying. You end up building a bunch of nonsense
-	that actually makes it more complicated in a way, when it would be simpler to learn
-	some basic html... but that's my opinion. I also feel like this is where Wordpress
-	has gone a little haywire at times, adding markup where it's not needed, while
-	at the same time not allowing some user provided markup to pass through unless
-	placed within a <code> element.
-
-    - [ ] Private content
-
-      - [ ] admin vs common user accounts
-
-    - [ ] User profiles?
-
-    - [ ] Summer Camp Registration model?
-
-    - [ ] Volunteers/CCF
-
-  - [ ] BLOG/NEWSfeed for news updates?
-
-  - [ ] PAGEs for general website content
-
-v-----------------------------------------------------------------------------06070259---v
+  Create a communication board for passing messages around
 
 * Development Documentation
 

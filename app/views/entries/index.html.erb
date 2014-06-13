@@ -5,8 +5,9 @@
 <% @entries.reverse.each do |entry| %>
   <div id="entry">
     <h1 class="entry-title"><%= entry.title %></h1>
-    <h2 class="entry-subtitle"><%= entry.subtitle %></h2> 
-    <p class="entry-content"><%= entry.body %></p>
+    <div class="entry-content"><%= entry.body %>
+      <h3 class="entry-subtitle"><%= entry.subtitle %></h3> 
+    </div>
   </div>
 <% end %>
 <br />
